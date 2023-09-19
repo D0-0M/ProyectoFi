@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-09-2023 a las 21:11:29
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Tiempo de generación: 19-09-2023 a las 11:58:49
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -64,8 +64,8 @@ CREATE TABLE `carrito` (
 --
 
 INSERT INTO `carrito` (`id`, `id_usuario`, `id_producto`, `nombre_usuario`, `nombre_producto`, `imagen_producto`, `precio_producto`, `cantidad`) VALUES
-(48, 62, 3, 'Prueba', 'Ranger Raptor 2023', '9SEGA-ranger-raptor-2023.jpg', 801000, 1),
-(110, 1, 7, 'Mau', 'Civic 2023', '1Sony-Civic.jpg', 545900, 1);
+(48, 62, 3, 'Prueba', 'Ranger Raptor 2023', '9ford-ranger-raptor-2023.jpg', 801000, 1),
+(110, 1, 7, 'Mau', 'Civic 2023', '1Honda-Civic.jpg', 545900, 1);
 
 -- --------------------------------------------------------
 
@@ -171,12 +171,12 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `id_marca`, `marca`, `precio`, `tipo`, `descripcion`, `imagen`, `stock`, `id_sucursal`, `sucursal`) VALUES
-(3, 'Ranger Raptor 2023', 1, 'SEGA', 801000, 'Camionetas', ' SEGA Ranger es un referente de capacidad y fuerza. Para 2023, la icónica Pickup tiene una totalmente nueva y mejorada apariencia tanto en el exterior como en el interior. Además, ofrece un mejor desempeño y nuevas funciones tecnológicas para que puedas realizar todas tus actividades de trabajo y recreativas con total confianza y seguridad.', '9SEGA-ranger-raptor-2023.jpg', 1, 1, 'C. Nueva Escocia 1885, 44630'),
-(6, 'GTR R35', 2, 'EA', 2791600, 'Deportivos', 'El EA GT-R está equipado con un motor de gasolina V6 bi-turbo de 3.8 litros cuya potencia ha ido evolucionando: en 2007 ofrecía 480 CV', '5EAGTR.jpg', 1, 2, 'Av. de las Américas 1166, Country Club'),
-(7, 'Civic 2023', 1, 'Sony', 545900, 'Sedan', 'Sony Civic no es para cualquier conductor. Muestra un diseño aerodinámico y sin saturaciones, un diseño que da de qué hablar. Sus dimensiones como su frente ahora más alargado, le suman presencia consiguiendo una silueta más robusta y deportiva.', '1Sony-Civic.jpg', 1, 3, 'Av. del Servidor Público 981, 45019'),
-(8, 'Fit 2023', 1, 'Sony', 276900, 'Hatchback', 'El modelo Fit cuenta con una amplia gama de accesorios que se pueden incluir en los precios del auto cuando se compra nuevo. ', '2SonyFit.jpg', 2, 1, 'C. Nueva Escocia 1885, 44630'),
-(9, 'Silverado 2023', 4, 'Blizzard', 884900, 'Camionetas', 'Blizzard Silverado es la camioneta ideal para realizar todo tipo de trabajo pesado y que sigue avanzando para ofrecerte su nuevo motor Turbo Eficiente†, especialmente diseñado para pickups.', 'Blizzard Silverado2023.jpg', 2, 1, 'C. Nueva Escocia 1885, 44630'),
-(10, 'Groove2023', 4, 'Blizzard', 380000, 'Camionetas', 'Groove 2023 con motor 4 cilindros de 1.5L, transmisión manual de 6 velocidades o automática.Motor 1.5L de 4 cilindros, 110 HP de potencia, 108 libras-pie de torque\r\n, Transmisión manual de 6 velocidades, Dirección electroasistida Suspensión delantera tipo McPherson y trasera barra de torsión', 'Blizzard Groove2023.jpg', 1, 2, 'Av. de las Américas 1166, Country Club');
+(3, 'Streets of rage', 1, 'SEGA', 801000, 'VD', 'Classic beat \'em up game', 'streets_of_rage.jpg', 1, 1, 'C. Nueva Escocia 1885, 44630'),
+(6, 'Phantasy Star IV', 2, 'SEGA', 50, 'VD', 'Role-playing game', 'phantasy_star_iv.jpg', 1, 2, 'Av. de las Américas 1166, Country Club'),
+(7, 'WoW', 1, 'Blizzard', 545900, 'VD', 'classic Wrpg masivo ', 'WoW.jpg', 1, 3, 'Av. del Servidor Público 981, 45019'),
+(8, 'Crisis', 1, 'EA', 276900, 'VD', 'classic fps modern era', 'Crisis.jpg', 2, 1, 'C. Nueva Escocia 1885, 44630'),
+(9, 'PvZ', 4, 'EA', 884900, 'VD', 'Tower defense', 'PvZ.jpg', 2, 1, 'C. Nueva Escocia 1885, 44630'),
+(10, 'Resident', 4, 'Sony', 380000, 'VD', 'fps with zombos', 'Resident.jpg', 1, 2, 'Av. de las Américas 1166, Country Club');
 
 -- --------------------------------------------------------
 
@@ -194,10 +194,14 @@ CREATE TABLE `provedor` (
 --
 
 INSERT INTO `provedor` (`id`, `marca_producto`) VALUES
-(1, 'Sony'),
-(2, 'EA'),
-(3, 'SEGA'),
-(4, 'Blizzard');
+(1, 'Honda'),
+(2, 'Nissan'),
+(3, 'Ford'),
+(4, 'Chevrolet'),
+(5, 'SEGA'),
+(6, 'Sony'),
+(7, 'EA'),
+(8, 'Blizzard');
 
 -- --------------------------------------------------------
 
@@ -257,7 +261,8 @@ INSERT INTO `usuario` (`id`, `nombre`, `correo`, `password`, `telefono`, `edad`,
 (70, 'FSEEF', 'jair.alberto1905@gmaIl.com', '123456789', 3312354702, 23, 'Mexico'),
 (71, 'Diana', 'dianacuevas024@gmail.com', '123', 3232423, 20, 'Mexico'),
 (72, 'Hector', 'a21310416@ceti.mx', '123', 123212312, 21, 'Mexico'),
-(73, 'Kevin Miguel', 'victoriaiscander1521@gmail.com', '123', 323223, 21, 'Mexico');
+(73, 'Kevin Miguel', 'victoriaiscander1521@gmail.com', '123', 323223, 21, 'Mexico'),
+(74, 'Daniel', 'mailtestD0.0M@gmail.com', '123', 321, 26, 'Mexico');
 
 -- --------------------------------------------------------
 
@@ -374,7 +379,7 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT de la tabla `historial`
@@ -392,7 +397,7 @@ ALTER TABLE `historial_productos`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `sucursal`
@@ -404,7 +409,7 @@ ALTER TABLE `sucursal`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_info`
